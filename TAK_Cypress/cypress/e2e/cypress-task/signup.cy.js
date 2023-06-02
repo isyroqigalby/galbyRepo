@@ -3,6 +3,7 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 })
 describe('Verify Sign Up Scenario', () => {
   it('Success Sign Up New Account', () => {
+    const randomUsername = Math.random().toString(36).substring(2,15)
     cy.visit('https://itera-qa.azurewebsites.net/')
     cy.get('.form-inline > .navbar-nav > :nth-child(1) > .nav-link').click()
     cy.get('#FirstName')
@@ -19,7 +20,7 @@ describe('Verify Sign Up Scenario', () => {
     .type('085655261726')
     cy.get('#Username')
     .should('be.visible')
-    .type('satpamngehe22')
+    .type(randomUsername)
     cy.get('#Password')
     .should('be.visible')
     .type('NyobaDoangIni1')
@@ -34,6 +35,7 @@ describe('Verify Sign Up Scenario', () => {
   })
 
   it('Success Sign Up New Account with a Special Character in Username', () => {
+    const randomUsername = Math.random().toString(36).substring(2,15)
     cy.visit('https://itera-qa.azurewebsites.net/')
     cy.get('.form-inline > .navbar-nav > :nth-child(1) > .nav-link').click()
     cy.get('#FirstName')
@@ -50,7 +52,7 @@ describe('Verify Sign Up Scenario', () => {
     .type('085655261726')
     cy.get('#Username')
     .should('be.visible')
-    .type('54tpamngehe22!!!')
+    .type(randomUsername)
     cy.get('#Password')
     .should('be.visible')
     .type('NyobaDoangIni1')
@@ -65,6 +67,7 @@ describe('Verify Sign Up Scenario', () => {
   })
 
   it('Success Sign Up New Account with Existing First Name and Surname but Different Username', () => {
+    const randomUsername = Math.random().toString(36).substring(2,15)+'!!@@'
     cy.visit('https://itera-qa.azurewebsites.net/')
     cy.get('.form-inline > .navbar-nav > :nth-child(1) > .nav-link').click()
     cy.get('#FirstName')
@@ -81,7 +84,7 @@ describe('Verify Sign Up Scenario', () => {
     .type('085655261726')
     cy.get('#Username')
     .should('be.visible')
-    .type('satpamngehe33')
+    .type(randomUsername)
     cy.get('#Password')
     .should('be.visible')
     .type('NyobaDoangIni1')
@@ -96,6 +99,7 @@ describe('Verify Sign Up Scenario', () => {
   })
 
   it('Success Sign Up with Empty Email', () => {
+    const randomUsername = Math.random().toString(36).substring(2,15)
     cy.visit('https://itera-qa.azurewebsites.net/')
     cy.get('.form-inline > .navbar-nav > :nth-child(1) > .nav-link').click()
     cy.get('#FirstName')
@@ -109,7 +113,7 @@ describe('Verify Sign Up Scenario', () => {
     .type('081774153675')
     cy.get('#Username')
     .should('be.visible')
-    .type('satpamlucu11')
+    .type(randomUsername)
     cy.get('#Password')
     .should('be.visible')
     .type('NyobaDoangIni1')
@@ -124,6 +128,7 @@ describe('Verify Sign Up Scenario', () => {
   })
 
   it('Success Sign Up with Empty Mobile Phone', () => {
+    const randomUsername = Math.random().toString(36).substring(2,15)
     cy.visit('https://itera-qa.azurewebsites.net/')
     cy.get('.form-inline > .navbar-nav > :nth-child(1) > .nav-link').click()
     cy.get('#FirstName')
@@ -140,7 +145,7 @@ describe('Verify Sign Up Scenario', () => {
     .click()
     cy.get('#Username')
     .should('be.visible')
-    .type('satpamkabur11')
+    .type(randomUsername)
     cy.get('#Password')
     .should('be.visible')
     .type('NyobaDoangIni1')
@@ -155,6 +160,7 @@ describe('Verify Sign Up Scenario', () => {
   })
 
   it('Success Sign Up with Existing Email but Different Username', () => {
+    const randomUsername = Math.random().toString(36).substring(2,15)
     cy.visit('https://itera-qa.azurewebsites.net/')
     cy.get('.form-inline > .navbar-nav > :nth-child(1) > .nav-link').click()
     cy.get('#FirstName')
@@ -171,7 +177,7 @@ describe('Verify Sign Up Scenario', () => {
     .type('081774153675')
     cy.get('#Username')
     .should('be.visible')
-    .type('satpamganteng11')
+    .type(randomUsername)
     cy.get('#Password')
     .should('be.visible')
     .type('NyobaDoangIni1')
@@ -414,7 +420,7 @@ describe('Verify Sign Up Scenario', () => {
     .should('contain.text', "'Confirm password' and 'Password' do not match.")
   })
 
-  it('Sign Up New Account with a Very Long Username', () => {
+  it('Failed Sign Up New Account with a Very Long Username', () => {
     cy.visit('https://itera-qa.azurewebsites.net/')
     cy.get('.form-inline > .navbar-nav > :nth-child(1) > .nav-link').click()
     cy.get('#FirstName')
