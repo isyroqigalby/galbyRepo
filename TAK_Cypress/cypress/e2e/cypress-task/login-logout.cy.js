@@ -64,6 +64,32 @@ describe('Verify Login-Logout Scenario', () => {
     .click()
   })
 
+  it('Failed Login with All Fields Empty', () => {
+    cy.visit('https://itera-qa.azurewebsites.net/')
+    cy.get('.form-inline > .navbar-nav > :nth-child(2) > .nav-link').click()
+    cy.get('.btn-primary')
+    .should('be.visible')
+    .click()
+    cy.get('.alert-danger')
+    .should('contain.text', 'Wrong username or password')
+  })
+
+  it('Failed Login with Unregistered Username', () => {
+    cy.visit('https://itera-qa.azurewebsites.net/')
+    cy.get('.form-inline > .navbar-nav > :nth-child(2) > .nav-link').click()
+    cy.get('#Username')
+    .should('be.visible')
+    .type('rujakcingur')
+    cy.get('#Password')
+    .should('be.visible')
+    .type('NyobaDoangIni1')
+    cy.get('.btn-primary')
+    .should('be.visible')
+    .click()
+    cy.get('.alert-danger')
+    .should('contain.text', 'Wrong username or password')
+  })
+
   it('Failed Login with Wrong Username', () => {
     cy.visit('https://itera-qa.azurewebsites.net/')
     cy.get('.form-inline > .navbar-nav > :nth-child(2) > .nav-link').click()

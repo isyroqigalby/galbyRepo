@@ -371,7 +371,7 @@ describe('Verify Dashboard Scenario', () => {
     .click()
   })
   
-  it.only('Success Delete the Customer', () => {
+  it('Success Delete the Customer', () => {
     cy.visit('https://itera-qa.azurewebsites.net/')
     cy.get('.form-inline > .navbar-nav > :nth-child(2) > .nav-link').click()
     cy.get('#Username')
